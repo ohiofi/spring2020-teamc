@@ -22,6 +22,7 @@ def doesRoomExist(roomNumber):
     try:
         if roomArray[roomNumber] == False:
             print("You can't go there.")
+            return False
         else:
             return True
     except:
