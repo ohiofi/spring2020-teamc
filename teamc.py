@@ -17,3 +17,13 @@ itemArray[602] = "Scarf"
 itemArray[503] = "Coin"
 itemArray[203] = "Remote"
 itemArray[302] = "Painting"
+
+def doesRoomExist(roomNumber):
+    try:
+        if roomArray[roomNumber] == False:
+            print("You can't go there.")
+        else:
+            return True
+    except:
+        print("You can't go there.")
+        return False
