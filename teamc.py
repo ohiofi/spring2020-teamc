@@ -38,19 +38,19 @@ def doesRoomExist(roomNumber):
 def moveFunction(userInput, room):
     if userInput == "n" and doesRoomExist(room - 1) == True:
         room = room - 1
-    else:
+    elif userInput == "n" and doesRoomExist(room - 0) == False:
         print("you can not go here")
     if userInput == "s" and doesRoomExist(room + 1) == True:
         room = room + 1
-    else:
+    elif userInput == "s" and doesRoomExist(room + 0) == False:
         print("you can not go here")
     if userInput == "e" and doesRoomExist(room + 100) == True: 
         room = room + 100
-    else:
+    elif userInput == "e" and doesRoomExist(room + 0) == False:
         print("you can not go here")
     if userInput == "w" and doesRoomExist(room - 100) == True:
         room = room - 100
-    else:
+    elif userInput == "w" and doesRoomExist(room - 0) == False:
         print("you can not go here")
     return room
 
