@@ -67,3 +67,5 @@ def main():
         print("Please type: n, s, e, w, or quit.")
         userinput = input()
         room = moveFunction(userinput, room)
+        if userinput == "quit":
+          break
