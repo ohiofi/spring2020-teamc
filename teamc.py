@@ -10,11 +10,11 @@ roomArray[701] = "You found your brother!"
 roomArray[702] = "There is a chair to the south and a couch to the west. You hear loud screaming to the north."
 roomArray[703] = "There is a chair here with a hat sitting on it. You hear screaming to the north."
 roomArray[202] = "There is a table to your east and a TV to your south."
-roomArray[203] = "The TV is all static and doesnt work, there is a remote on the tv. It looks like there is a hallway to your east."
+roomArray[203] = "The TV is all static and doesn't work, there is a remote on the tv. It looks like there is a hallway to your east."
 roomArray[302] = "There is a interesting painting on the table. There is opening in the wall to the south."
 roomArray[303] = "There is echoing coming down the hallway to your east and a tv to your west."
-roomArray[403] = "You have enetered the hallway. There are more rooms east. An Echo is getting slightly louder."
-roomArray[503] = "You are close to the end of the hallway. There is a clear echo of someone. There is a coin in this room and a room to your east."
+roomArray[403] = "You have entered the hallway. There are more rooms east. An Echo is getting slightly louder."
+roomArray[503] = "You are close to the end of the hallway. There is a window here and a clear echo of someone. There is a coin on the window sill and a room to your east."
 roomArray[603] = "You are not in the hallway anymore, you are in a study. There is a chair to the east and a couch to the north."
 roomArray[602] = "You are in a room with a couch and a scarf. There is an antique painting to the north."
 itemArray[601] = "Jewel"
@@ -38,20 +38,12 @@ def doesRoomExist(roomNumber):
 def moveFunction(userInput, room):
     if userInput == "n" and doesRoomExist(room - 1) == True:
         room = room - 1
-    elif userInput == "n" and doesRoomExist(room - 0) == False:
-        print("you can not go here")
-    if userInput == "s" and doesRoomExist(room + 1) == True:
+    elif userInput == "s" and doesRoomExist(room + 1) == True:
         room = room + 1
-    elif userInput == "s" and doesRoomExist(room + 0) == False:
-        print("you can not go here")
-    if userInput == "e" and doesRoomExist(room + 100) == True: 
+    elif userInput == "e" and doesRoomExist(room + 100) == True:
         room = room + 100
-    elif userInput == "e" and doesRoomExist(room + 0) == False:
-        print("you can not go here")
-    if userInput == "w" and doesRoomExist(room - 100) == True:
+    elif userInput == "w" and doesRoomExist(room - 100) == True:
         room = room - 100
-    elif userInput == "w" and doesRoomExist(room - 0) == False:
-        print("you can not go here")
     return room
 
 def main():
