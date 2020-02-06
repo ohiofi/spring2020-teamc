@@ -57,7 +57,7 @@ def main():
     while True:
         print(roomArray[room])
         print("Please type: n, s, e, w, or quit.")
-        userinput = input()
-        room = moveFunction(userinput, room)
+        userInput = input()
+        room = moveFunction(userInput, room)
         if userinput == "quit":
           break
