@@ -45,6 +45,12 @@ def moveFunction(userInput, room):
     elif userInput == "w" and doesRoomExist(room - 100) == True:
         room = room - 100
     return room
+def doesItemExist(itemNumber):
+    try:
+        if not itemArray[itemNumber] == False:
+            print("Item" + itemArray[room])
+    except:
+      return
 
 def main():
     room = 202
@@ -55,9 +61,15 @@ def main():
     print("You are in the living room of a mansion. You're brother has been captured by some angry ghosts, and it is your job to save him.")
     time.sleep(2)
     while True:
-        print(roomArray[room])
-        print("Please type: n, s, e, w, or quit.")
-        userInput = input()
-        room = moveFunction(userInput, room)
-        if userinput == "quit":
-          break
+      print(roomArray[room])
+      if not itemArray[room] == False:
+        print(itemArray[room])
+        print("Please type: n, s, e, w, take or quit.")
+      else:
+        print("Please type: n, s, e, w,  or quit.")
+      userInput = input()
+      room = moveFunction(userInput, room)
+      if userInput == "take":
+        print("You have taken this item" + itemArray[room])
+      if userInput == "quit":
+        break
