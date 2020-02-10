@@ -28,6 +28,10 @@ itemArray[602] = "Scarf"
 itemArray[503] = "Coin"
 itemArray[203] = "Remote"
 itemArray[302] = "Painting"
+itemArray[604] = "spoon"
+itemArray[605] = "plate"
+itemArray[403] = "glove"
+itemArray[701] = "key"
 
 def doesRoomExist(roomNumber):
     try:
