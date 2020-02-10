@@ -1,5 +1,7 @@
 import time
 
+correctAnswers = []
+wrongAnswers = []
 roomArray = []
 itemArray = []
 for i in range(999):
@@ -63,6 +65,45 @@ def doesItemExist(itemNumber):
             print("Item" + itemArray[room])
     except:
       return
+
+def specialRooms():
+  if room == 604:
+    if "key" not in inventory: 
+      print("the room to the south is locked. You need a key to unlock it.")
+      roomArray[603] = False
+    else:
+      print("You used the key to unlock the door.")
+      roomArray[304] = "The unlocked door leads into the kitchen"
+
+score = 0
+def askQuestion(question , answer):
+  while True:
+    global score
+    print(question)
+    userInput = str(input())
+    userInput = userInput.lower()
+    if userInput == answer:
+      score = score + 5
+      correctAnswers.append(userInput)
+      print("Correct, your score is " + str(score))
+      break
+    else:
+      score = score - 3
+      wrongAnswers.append(userInput)
+      print("Incorrect, your score is " + str(score))
+
+def startQuiz():
+  askQuestion("Using letters, what does 5 times 2 equal?", answer = "ten")
+  askQuestion("Using letters, what does 9 divided by 3 equal?", answer = "three")
+  askQuestion("Using letters, what does 7 plus 5 equal?", answer = "twelve")
+  askQuestion("Using letters, what does 4 times 2 equal?", answer = "eight")
+  askQuestion("Using letters, what does 2 divided by 1 equal?", answer = "two")
+  askQuestion("Using letters, what does 4 plus 5 equal", answer = "nine")
+
+startQuiz()
+print("Your correct answers were: " + str(correctAnswers))
+print("Your wrong answers were: " + str(wrongAnswers))
+
 
 def main():
     room = 202
