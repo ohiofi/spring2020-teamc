@@ -67,6 +67,93 @@ def doesItemExist(itemNumber):
     except:
       return
 
+def askPlayer():
+    while True:
+        print("would you like to steal or use one of your weapons")
+        sleep(.5)
+        print("1 = steal")
+        print("2 = valve oil")
+        print("3 = talking back")
+        print("4 = mouth piece")
+        userInput = input()
+        try:
+            if userInput == "1" or userInput == "2" or userInput == "3" or userInput == "4":
+                break
+        except:
+            print("not a valid option")
+            continue
+    return userInput
+    
+def diceRoll():
+    diceNumber = randint(1,6)
+    return diceNumber
+
+def enemyHealth():
+    health = randint(30,50)
+    return health
+
+def hitEnemy(weapon):
+    damage = randint(5, 10)
+    return damage
+
+def hitPlayer(playerHealth):
+    enemyAttacks = ["sneak attack", "stomp", "fireball", "roar", "big punch", "round house kick", "stike"]
+    enemyAttack = choice(enemyAttacks)
+    print("boss uses " + str(enemyAttack))
+    damage = 0
+    #how much damage each attack does
+    damage = damage + diceRoll()
+    if playerHealth > 25:
+        damage = damage + diceRoll()
+    print("boss did " + str(damage) + " damage")
+    return damage
+
+def whoWins(bossHealth, playerHealth):
+    if playerHealth <= 0:
+        print("you win")
+    if bossHealth <= 0:
+        print("enemy wins")
+
+def playerLoseHealth(playerHealth, enemy):
+    damage = randint(3, enemy["level"])
+    randomAttack = choice(enemy["attacks"])
+    sleep(.5)
+    print("the enemy used " + str(randomAttack) + " and did " + str(damage) + " damage")
+    newPlayerHealth = int(playerHealth) - damage
+    sleep(.5)
+    print("you have " + str(newPlayerHealth) + " health")
+    return newPlayerHealth
+
+def battle():
+    playerHealth = 50
+    print("you have " + str(playerHealth) + " health")
+    bossHealth = enemyHealth()
+    while playerHealth > 0 and bossHealth > 0:
+        print("The dragon has " + str(bossHealth) + " health")
+        sleep(1)
+        print("What attack will you use?")
+        print("Ice Spell")
+        print("Fire Spell")
+        print("Ice Sword")
+        print("Fire Sword")
+        weapon = input()
+        sleep(1)
+        damage = hitEnemy(weapon)
+        print("you did " + str(damage) + " damage")
+        bossHealth = bossHealth - damage
+        if bossHealth > 0:
+          damage = hitPlayer(playerHealth)
+          playerHealth = playerHealth - damage
+          sleep(1)
+          print("You have " + str(playerHealth) + " remaining")
+          sleep(1)
+        if bossHealth <= 0:
+            print("boss has " + str(0) + " health")
+        else:
+            if playerHealth <= 0:
+                print("you have " + str(0) + " health")
+        whoWins(playerHealth, bossHealth)
+
 def specialRooms():
   if room == 604:
     if "key" not in inventory:
