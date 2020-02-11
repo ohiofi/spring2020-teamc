@@ -1,4 +1,5 @@
 import time
+from random import *
 
 correctAnswers = []
 wrongAnswers = []
@@ -22,8 +23,8 @@ roomArray[602] = "There is a couch here with a couch and a scarf. There is an an
 roomArray[604] = "You are now in the kitchen. There is a table in front of you."
 roomArray[605] = "There is a table here. There is a counter to the east."
 roomArray[606] = "You found your brother!"
-roomArray[705] = "There is a "
-roomArray[706] = "There is"
+roomArray[705] = "knife"
+roomArray[706] = "bowl"
 itemArray[601] = "Jewel"
 itemArray[703] = "Hat"
 itemArray[602] = "Scarf"
