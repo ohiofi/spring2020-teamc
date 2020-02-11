@@ -1,4 +1,5 @@
 import time
+from map import *
 
 correctAnswers = []
 wrongAnswers = []
@@ -68,7 +69,7 @@ def doesItemExist(itemNumber):
 
 def specialRooms():
   if room == 604:
-    if "key" not in inventory: 
+    if "key" not in inventory:
       print("the room to the south is locked. You need a key to unlock it.")
       roomArray[603] = False
     else:
@@ -103,6 +104,7 @@ def startQuiz():
 
 def main():
     room = 202
+    map = Map()
     print("Welcome to Mansion Mystery!")
     time.sleep(1)
     print("By Callie, Shayan, and Dalton.")
@@ -111,6 +113,7 @@ def main():
     time.sleep(2)
     while True:
         print(roomArray[room])
+        map.draw(roomArray, itemArray, room)
         if not itemArray[room] == False:
             print("Items here: " + itemArray[room])
             print("Please type: n, s, e, w, take or quit.")
