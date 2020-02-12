@@ -1,5 +1,8 @@
 import time
+from map import *
 
+global roomArray
+global inventory
 correctAnswers = []
 wrongAnswers = []
 roomArray = []
@@ -30,8 +33,8 @@ itemArray[602] = "Scarf"
 itemArray[503] = "Coin"
 itemArray[203] = "Remote"
 itemArray[302] = "Painting"
-roomArray[705] = "Knife"
-roomArray[706] = "Bowl"
+itemArray[705] = "Knife"
+itemArray[706] = "Bowl"
 itemArray[604] = "Spoon"
 itemArray[605] = "Plate"
 itemArray[403] = "Glove"
@@ -84,65 +87,65 @@ def askQuestion(question , answer):
       wrongAnswers.append(userInput)
       print("Incorrect, your score is " + str(score))
 
+
 def startQuiz():
-  while True:
-    askQuestion("Using letters, what does 5 times 2 equal?", answer = "ten")
-    askQuestion("Using letters, what does 9 divided by 3 equal?", answer = "three")
-    askQuestion("Using letters, what does 7 plus 5 equal?", answer = "twelve")
-    askQuestion("Using letters, what does 4 times 2 equal?", answer = "eight")
-    askQuestion("Using letters, what does 2 divided by 1 equal?", answer = "two")
-    askQuestion("Using letters, what does 4 plus 5 equal", answer = "nine")
-    if score > 10:
-      quizCompleted == True
-      break
+  askQuestion("Using letters, what does 5 times 2 equal?", answer = "ten")
+  askQuestion("Using letters, what does 9 divided by 3 equal?", answer = "three")
+  askQuestion("Using letters, what does 7 plus 5 equal?", answer = "twelve")
+  askQuestion("Using letters, what does 4 times 2 equal?", answer = "eight")
+  askQuestion("Using letters, what does 2 divided by 1 equal?", answer = "two")
+  askQuestion("Using letters, what does 4 plus 5 equal", answer = "nine")
+  if score > 10:
+      quizCompleted = True
 
 
-def specialRooms():
-  global room
-  global quizCompleted
-  global roomArray
-  global inventory
-  if room == 304 and quizCompleted == False:
+
+
+def specialRooms(room, quizCompleted):
+  if room == 604 and quizCompleted == False:
     startQuiz()
   if room == 604:
     if "Key" not in inventory:
       print("the room to the south is locked. You need a key to unlock it.")
-      roomArray[603] = False
+      roomArray[604] = False
     else:
       print("You used the key to unlock the door.")
       roomArray[304] = "The unlocked door leads into the kitchen"
 
+
 def main():
-  print("███╗   ███╗ █████╗ ███╗   ██╗███████╗██╗ ██████╗ ███╗   ██╗    ███╗   ███╗██╗   ██╗███████╗████████╗███████╗██████╗ ██╗   ██╗")
-  print("████╗ ████║██╔══██╗████╗  ██║██╔════╝██║██╔═══██╗████╗  ██║    ████╗ ████║╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝██╔══██╗╚██╗ ██╔╝")
-  print("██╔████╔██║███████║██╔██╗ ██║███████╗██║██║   ██║██╔██╗ ██║    ██╔████╔██║ ╚████╔╝ ███████╗   ██║   █████╗  ██████╔╝ ╚████╔╝") 
-  print("██║╚██╔╝██║██╔══██║██║╚██╗██║╚════██║██║██║   ██║██║╚██╗██║    ██║╚██╔╝██║  ╚██╔╝  ╚════██║   ██║   ██╔══╝  ██╔══██╗  ╚██╔╝ ") 
-  print("██║ ╚═╝ ██║██║  ██║██║ ╚████║███████║██║╚██████╔╝██║ ╚████║    ██║ ╚═╝ ██║   ██║   ███████║   ██║   ███████╗██║  ██║   ██║  ") 
-  print("╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝    ╚═╝     ╚═╝   ╚═╝   ╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝   ╚═╝   ")
-  room = 202
-  quizCompleted = False
-  print("Welcome to Mansion Mystery!")
-  time.sleep(1)
-  print("By Callie, Shayan, and Dalton.")
-  time.sleep(1)
-  print("You are in the living room of a mansion. You're brother has been captured by some angry ghosts, and it is your job to save him.")
-  time.sleep(2)
-  while True:
-      print(roomArray[room])
-      if not itemArray[room] == False:
-          print("Items here: " + itemArray[room])
-          print("Please type: n, s, e, w, take or quit.")
-          userInput = input()
-          room = moveFunction(userInput, room)
-          specialRooms()
-      else:
-          print("Please type: n, s, e, w,  or quit.")
-          userInput = input()
-          room = moveFunction(userInput, room)
-          specialRooms()
-      if userInput == "take":
-          print("You have taken this item: " + itemArray[room])
-          inventory.append(itemArray[room])
-          itemArray[room] = False
-      if userInput == "quit":
-          break
+    print("███╗   ███╗ █████╗ ███╗   ██╗███████╗██╗ ██████╗ ███╗   ██╗    ███╗   ███╗██╗   ██╗███████╗████████╗███████╗██████╗ ██╗   ██╗")
+    print("████╗ ████║██╔══██╗████╗  ██║██╔════╝██║██╔═══██╗████╗  ██║    ████╗ ████║╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝██╔══██╗╚██╗ ██╔╝")
+    print("██╔████╔██║███████║██╔██╗ ██║███████╗██║██║   ██║██╔██╗ ██║    ██╔████╔██║ ╚████╔╝ ███████╗   ██║   █████╗  ██████╔╝ ╚████╔╝") 
+    print("██║╚██╔╝██║██╔══██║██║╚██╗██║╚════██║██║██║   ██║██║╚██╗██║    ██║╚██╔╝██║  ╚██╔╝  ╚════██║   ██║   ██╔══╝  ██╔══██╗  ╚██╔╝ ") 
+    print("██║ ╚═╝ ██║██║  ██║██║ ╚████║███████║██║╚██████╔╝██║ ╚████║    ██║ ╚═╝ ██║   ██║   ███████║   ██║   ███████╗██║  ██║   ██║  ") 
+    print("╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝    ╚═╝     ╚═╝   ╚═╝   ╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝   ╚═╝   ")
+    room = 202
+    map = Map()
+    quizCompleted = False
+    print("Welcome to Mansion Mystery!")
+    time.sleep(1)
+    print("By Callie, Shayan, and Dalton.")
+    time.sleep(1)
+    print("You are in the living room of a mansion. You're brother has been captured by some angry ghosts, and it is your job to save him.")
+    time.sleep(2)
+    while True:
+        print(roomArray[room])
+        map.draw(roomArray, itemArray, room)
+        if not itemArray[room] == False:
+            print("Items here: " + itemArray[room])
+            print("Please type: n, s, e, w, take or quit.")
+            userInput = input()
+            room = moveFunction(userInput, room)
+            specialRooms(room, quizCompleted)
+        else:
+            print("Please type: n, s, e, w,  or quit.")
+            userInput = input()
+            room = moveFunction(userInput, room)
+            specialRooms(room,quizCompleted)
+        if userInput == "take":
+            print("You have taken this item: " + itemArray[room])
+            inventory.append(itemArray[room])
+            itemArray[room] = False
+        if userInput == "quit":
+            break
