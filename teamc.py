@@ -1,4 +1,12 @@
 import time
+from random import *
+from map import *
+
+
+# create quizComplete here and set it to false, then declare it global inside of each function that you use it
+global roomArray # in Python, the global keyword only works when used inside of a function
+global inventory # in Python, the global keyword only works when used inside of a function
+
 
 correctAnswers = []
 wrongAnswers = []
@@ -7,10 +15,10 @@ itemArray = []
 for i in range(999):
     roomArray.append(False)
     itemArray.append(False)
-roomArray[601] = "There is an antique box here with a jewel inside. There is a couch to the south and you see something shiny to the east."
+roomArray[601] = "There is an antique box here. There is a couch to the south and you see something shiny to the east."
 roomArray[701] = "You are in the north east corner of the study"
 roomArray[702] = "There is a chair to the south and a couch to the west. You see something shiny to the north."
-roomArray[703] = "There is a chair here with a hat sitting on it. There is a door to the west."
+roomArray[703] = "There is a chair here. There is a door to the west."
 roomArray[202] = "There is a table to your east and a TV to your south."
 roomArray[203] = "The TV is all static and doesn't work. It looks like there is a hallway to your east."
 roomArray[302] = "There is a table here. There is opening in the wall to the south."
@@ -19,10 +27,14 @@ roomArray[403] = "You have entered the hallway. There is something on the ground
 roomArray[503] = "You are close to the end of the hallway. There is a window here and the echo is louder. There is a room to your east."
 roomArray[603] = "You are not in the hallway anymore, you are in a study. There is a chair to the east, a couch to the north, and a door to the south."
 roomArray[602] = "There is a couch here. There is an antique box to the north."
+
 roomArray[605] = "There is a table here. There is a counter to the east and a person to the south."
+
+roomArray[604] = "You are now in the kitchen. There is a table in front of you."
+
 roomArray[606] = "You found your brother!"
-roomArray[705] = "There is a table to the east and and cabinet to the south."
-roomArray[706] = "There is counter to the north and a person to the east."
+roomArray[705] = "knife"
+roomArray[706] = "bowl"
 itemArray[601] = "Jewel"
 itemArray[703] = "Hat"
 itemArray[602] = "Scarf"
@@ -36,6 +48,7 @@ itemArray[605] = "Plate"
 itemArray[403] = "Glove"
 itemArray[701] = "Key"
 inventory = []
+
 
 def doesRoomExist(roomNumber):
     try:
