@@ -1,6 +1,7 @@
 import time
 from map import *
 
+# create quizComplete here and set it to false, then declare it global inside of each function that you use it
 global roomArray # in Python, the global keyword only works when used inside of a function
 global inventory # in Python, the global keyword only works when used inside of a function
 correctAnswers = []
@@ -89,6 +90,7 @@ def askQuestion(question , answer):
 
 
 def startQuiz():
+  # declare here that you are using the global variable quizCompleted
   askQuestion("Using letters, what does 5 times 2 equal?", answer = "ten")
   askQuestion("Using letters, what does 9 divided by 3 equal?", answer = "three")
   askQuestion("Using letters, what does 7 plus 5 equal?", answer = "twelve")
@@ -103,18 +105,20 @@ def startQuiz():
 
 
 def specialRooms(room, quizCompleted):
+  # declare here that you are using the global variable quizCompleted
   if room == 604 and quizCompleted == False:
     startQuiz()
   if room == 604:
     if "Key" not in inventory:
       print("the room to the south is locked. You need a key to unlock it.")
-      roomArray[604] = False
+      roomArray[604] = False # This makes room 604 not exist, which means you can NEVER unlock the door. Remove this line?
     else:
       print("You used the key to unlock the door.")
       roomArray[304] = "The unlocked door leads into the kitchen"
 
 
 def main():
+    # declare here that you are using the global variable quizCompleted
     print("███╗   ███╗ █████╗ ███╗   ██╗███████╗██╗ ██████╗ ███╗   ██╗    ███╗   ███╗██╗   ██╗███████╗████████╗███████╗██████╗ ██╗   ██╗")
     print("████╗ ████║██╔══██╗████╗  ██║██╔════╝██║██╔═══██╗████╗  ██║    ████╗ ████║╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝██╔══██╗╚██╗ ██╔╝")
     print("██╔████╔██║███████║██╔██╗ ██║███████╗██║██║   ██║██╔██╗ ██║    ██╔████╔██║ ╚████╔╝ ███████╗   ██║   █████╗  ██████╔╝ ╚████╔╝") 
