@@ -6,6 +6,7 @@ from map import *
 # create quizComplete here and set it to false, then declare it global inside of each function that you use it
 global roomArray # in Python, the global keyword only works when used inside of a function
 global inventory # in Python, the global keyword only works when used inside of a function
+
 correctAnswers = []
 wrongAnswers = []
 roomArray = []
