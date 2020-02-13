@@ -3,7 +3,7 @@ from random import *
 from map import *
 
 
-# create quizComplete here and set it to false, then declare it global inside of each function that you use it
+quizCompleted = False# create quizComplete here and set it to false, then declare it global inside of each function that you use it
 global roomArray # in Python, the global keyword only works when used inside of a function
 global inventory # in Python, the global keyword only works when used inside of a function
 
@@ -97,6 +97,7 @@ def askQuestion(question , answer):
       print("Incorrect, your score is " + str(score))
 
 def startQuiz():
+  global quizCompleted
   score = 0
   while True:
     askQuestion("Using letters, what does 5 times 2 equal?", answer = "ten")
@@ -116,21 +117,22 @@ def startQuiz():
       break
 
 
-def specialRooms():
-  global room
+def specialRooms(room):
   global quizCompleted
-  global roomArray
-  global inventory
-  if roomArray == 604 and quizCompleted == False:
+  #global roomArray
+  #global inventory
+  if room == 604 and quizCompleted == False:
     startQuiz()
-  if roomArray == 604:
-    if itemArray[701] != False:
+  if room == 604:
+    if key not in inventory:
       print("the room to the south is locked. You need a key to unlock it.")
     else:
       print("You used the key to unlock the door.")
       roomArray[604] = "The unlocked door leads into the kitchen, there is streaming to the"
 
 def main():
+  map1 = Map()
+  
   print("███╗   ███╗ █████╗ ███╗   ██╗███████╗██╗ ██████╗ ███╗   ██╗    ███╗   ███╗██╗   ██╗███████╗████████╗███████╗██████╗ ██╗   ██╗")
   print("████╗ ████║██╔══██╗████╗  ██║██╔════╝██║██╔═══██╗████╗  ██║    ████╗ ████║╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝██╔══██╗╚██╗ ██╔╝")
   print("██╔████╔██║███████║██╔██╗ ██║███████╗██║██║   ██║██╔██╗ ██║    ██╔████╔██║ ╚████╔╝ ███████╗   ██║   █████╗  ██████╔╝ ╚████╔╝")
@@ -146,6 +148,7 @@ def main():
   print("You are in the living room of a mansion. You're brother has been captured by some angry ghosts, and it is your job to save him.")
   time.sleep(2)
   while True:
+      map1.draw(roomArray, itemArray, room)
       print(roomArray[room])
       if not itemArray[room] == False:
           print("Items here: " + itemArray[room])
@@ -160,8 +163,8 @@ def main():
           print("You have taken this item: " + itemArray[room])
           inventory.append(itemArray[room])
           itemArray[room] = False
-      if roomArray == 604:
-          specialRooms()
+      
+      specialRooms(room)
       if userInput == "quit":
           break
 
