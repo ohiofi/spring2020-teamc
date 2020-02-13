@@ -1,8 +1,8 @@
 import time
 from map import *
 
-global roomArray
-global inventory
+global roomArray # in Python, the global keyword only works when used inside of a function
+global inventory # in Python, the global keyword only works when used inside of a function
 correctAnswers = []
 wrongAnswers = []
 roomArray = []
@@ -96,6 +96,7 @@ def startQuiz():
   askQuestion("Using letters, what does 2 divided by 1 equal?", answer = "two")
   askQuestion("Using letters, what does 4 plus 5 equal", answer = "nine")
   if score > 10:
+      # setting quizCompleted to True here is actually creating a local variable. quizCompleted is not global in this function.
       quizCompleted = True
 
 
